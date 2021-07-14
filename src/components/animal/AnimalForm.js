@@ -9,6 +9,7 @@ export const AnimalForm = () => {
   const { addAnimal } = useContext(AnimalContext)
   const { locations, getLocations } = useContext(LocationContext)
   const { customers, getCustomers } = useContext(CustomerContext)
+  const history = useHistory();
 
   /*
   With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
@@ -23,7 +24,6 @@ export const AnimalForm = () => {
     customerId: 0
   });
 
-  const history = useHistory();
 
   /*
   Reach out to the world and get customers state

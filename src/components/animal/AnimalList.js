@@ -7,11 +7,12 @@ import { AnimalCard } from "./AnimalCard"
 import "./Animal.css"
 
 export const AnimalList = () => {
-  // This state changes when `getAnimals()` is invoked below
+    // This state changes when `getAnimals()` is invoked below
     const { animals, getAnimals } = useContext(AnimalContext)
     const { locations, getLocations } = useContext(LocationContext)
     const { customers, getCustomers } = useContext(CustomerContext)
-
+    const history = useHistory() 
+    
 
   //useEffect - reach out to the world for something
     useEffect(() => {
@@ -21,7 +22,6 @@ export const AnimalList = () => {
         .then(getAnimals)
     }, [])
 
-    const history = useHistory() 
   
     return (
         <>
@@ -32,10 +32,10 @@ export const AnimalList = () => {
             <div className="animals">
         {animals.map(animal => {
             const owner = customers.find(customer => customer.id === animal.customerId)
-            const office = locations.find(location => location.id === animal.locationId)
+            const location = locations.find(location => location.id === animal.locationId)
         
             return <AnimalCard key={animal.id} 
-                               location={office}
+                               location={location}
                                customer={owner}
                                animal={animal} />
             })
